@@ -60,6 +60,7 @@ void read_file(void)
 		}
 		y_test[i] = atoi(token);
 	}
+    printf("Done Reading Testing...");
 }
 
 
@@ -73,8 +74,11 @@ int main(void)
 	struct MultiClassTsetlinMachine *mc_tsetlin_machine = CreateMultiClassTsetlinMachine();
 
 	float accuracy_sum = 0.0;
+    printf("Init mc TM");
     printf("starting...");
 	for (int i = 0; i < 100; i++) {
+        printf("Epoch %d\n",i);
+        fflush(stdout);
 		mc_tm_initialize(mc_tsetlin_machine);
 		clock_t start_total = clock();
 		mc_tm_fit(mc_tsetlin_machine, X_train, y_train, NUMBER_OF_EXAMPLES, 500, 32.1);
